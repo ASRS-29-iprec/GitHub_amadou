@@ -1,0 +1,27 @@
+name: CI Bash Scripts
+ 
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+ 
+jobs:
+  bash-tests:
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - name: Récupération du dépôt
+        uses: actions/checkout@v4
+ 
+      - name: Donner les droits d'exécution
+        run: chmod +x scripts/*.sh
+ 
+      - name: Exécution du script langues
+        run: ./scripts/langues.sh
+ 
+      - name: Exécution du script âge
+        run: ./scripts/age.sh 30
+ 
+      - name: Exécution du script boucle
+        run: echo "20" | ./scripts/boucle.sh
